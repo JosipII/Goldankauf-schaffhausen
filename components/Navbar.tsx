@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { useLang } from '@/lib/lang-context'
 import styles from './Navbar.module.css'
 
@@ -8,8 +9,11 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <span className={styles.logoName}>Goldankauf Schaffhausen</span>
-        <span className={styles.logoSub}>{t.navSub}</span>
+        <Image src="/images/logo.svg" alt="Termin8 Logo" width={40} height={40} className={styles.logoImg} />
+        <div className={styles.logoText}>
+          <span className={styles.logoName}>Goldankauf Schaffhausen</span>
+          <span className={styles.logoSub}>{t.navSub}</span>
+        </div>
       </div>
       <div className={styles.right}>
         <div className={styles.langToggle}>

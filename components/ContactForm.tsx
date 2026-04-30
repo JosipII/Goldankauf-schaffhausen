@@ -1,5 +1,6 @@
 'use client'
 import { useState, FormEvent } from 'react'
+import Image from 'next/image'
 import { useLang } from '@/lib/lang-context'
 import styles from './ContactForm.module.css'
 
@@ -41,7 +42,9 @@ export default function ContactForm() {
         <div>
           <p className={styles.introText}>{t.formIntro}</p>
           <div className={styles.contactRow}>
-            <div className={styles.contactIcon}>📍</div>
+            <div className={styles.contactIconLogo}>
+              <Image src="/images/logo.svg" alt="Termin8" width={60} height={60} />
+            </div>
             <div className={styles.contactText}>
               <strong>Termin8</strong><br />
               Löwengässchen 3<br />
@@ -49,11 +52,11 @@ export default function ContactForm() {
             </div>
           </div>
           <div className={styles.contactRow}>
-            <div className={styles.contactIcon}>✉</div>
+            <div className={`${styles.contactIconPlain} ${styles.emailIcon}`}>✉</div>
             <div className={styles.contactText}>kontakt@termin8.ch</div>
           </div>
           <div className={styles.contactRow}>
-            <div className={styles.contactIcon}>📞</div>
+            <div className={styles.contactIconPlain}>📞</div>
             <div className={styles.contactText}>+41 52 624 25 25</div>
           </div>
         </div>

@@ -15,14 +15,24 @@
   font-size: 15px; font-weight: 300; color: var(--text-muted);
   line-height: 1.8; margin-bottom: 36px;
 }
-.contactRow { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.contactRow { display: flex; align-items: center; gap: 28px; margin-bottom: 28px; }
 .contactIcon {
-  width: 36px; height: 36px; background: var(--gold-pale);
-  border: 1px solid var(--border); border-radius: 6px;
+  width: 72px; height: 72px; background: var(--gold-pale);
+  border: 1px solid var(--border); border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px; flex-shrink: 0; padding-top: 2px;
+  font-size: 30px; flex-shrink: 0; padding-top: 4px;
 }
-.contactText { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.contactIconLogo {
+  width: 72px; height: 72px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.contactIconPlain {
+  width: 72px; height: 72px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+}
+.contactIconPlain.emailIcon { font-size: 36px; }
+.contactText { font-size: 26px; color: var(--text-muted); line-height: 1.6; }
 .fields { display: flex; flex-direction: column; gap: 14px; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .input {

@@ -60,6 +60,11 @@
   color: var(--text); line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em;
 }
 .priceUnit { font-size: 10.5px; color: var(--text-faint); }
+.priceMeta {
+  display: flex; flex-direction: column; gap: 2px;
+  margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-light);
+  font-size: 9.5px; color: var(--text-faint); letter-spacing: 0.04em;
+}
 .priceInline {
   display: none; background: var(--surface); border: 1px solid var(--border);
   border-radius: 10px; padding: 18px 22px; margin-top: 36px;

@@ -3,9 +3,19 @@ import { useEffect, useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import styles from './Hero.module.css'
 
+function formatTime(iso: string): string {
+  return new Date(iso).toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })
+}
+
+function nextUpdate(iso: string): string {
+  const next = new Date(new Date(iso).getTime() + 8 * 60 * 60 * 1000)
+  return next.toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })
+}
+
 export default function Hero() {
   const { t } = useLang()
   const [price, setPrice] = useState<string>('—')
+  const [updatedAt, setUpdatedAt] = useState<string | null>(null)
 
   useEffect(() => {
     fetch('/api/gold-price')
@@ -14,9 +24,19 @@ export default function Hero() {
         if (data.price) {
           setPrice(data.price.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
         }
+        if (data.updatedAt) setUpdatedAt(data.updatedAt)
       })
       .catch(() => {})
   }, [])
+
+  const PriceMeta = () => updatedAt ? (
+    <div className={styles.priceMeta}>
+      <span>{t.priceStand}: {formatTime(updatedAt)}</span>
+      <span>{t.priceNext}: {nextUpdate(updatedAt)}</span>
+    </div>
+  ) : (
+    <div className={styles.priceMeta}><span>— alle 8h</span></div>
+  )
 
   const PriceContent = () => (
     <>
@@ -26,6 +46,7 @@ export default function Hero() {
       </div>
       <div className={styles.priceValue}>{price}</div>
       <div className={styles.priceUnit}>{t.priceUnit}</div>
+      <PriceMeta />
     </>
   )
 
@@ -50,6 +71,7 @@ export default function Hero() {
           </div>
           <div className={styles.priceInlineValue}>{price}</div>
           <div className={styles.priceInlineUnit}>{t.priceUnit}</div>
+          <PriceMeta />
         </div>
       </div>
       <div className={styles.priceCard}>
