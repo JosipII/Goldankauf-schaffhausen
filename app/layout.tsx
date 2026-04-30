@@ -5,6 +5,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Goldankauf Schaffhausen',
   description: 'Gold verkaufen in Schaffhausen — diskret, seriös und zum besten Marktpreis.',
+  icons: [],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
