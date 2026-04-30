@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
   const body = await req.json()
   const { firstName, lastName, email, phone, message } = body
 
-  // Validate required fields
   if (!firstName || !lastName || !email || !message) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
@@ -17,6 +15,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from: 'Goldankauf Schaffhausen <noreply@goldankauf-schaffhausen.ch>',
       to: 'kontakt@termin8.ch',
