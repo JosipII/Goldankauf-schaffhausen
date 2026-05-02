@@ -5,13 +5,30 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const { firstName, lastName, email, phone, message } = body
 
-  if (!firstName || !lastName || !email || !message) {
+  if (
+    typeof firstName !== 'string' || typeof lastName !== 'string' ||
+    typeof email !== 'string' || typeof message !== 'string'
+  ) {
+    return NextResponse.json({ error: 'Invalid field types' }, { status: 400 })
+  }
+
+  if (!firstName.trim() || !lastName.trim() || !email.trim() || !message.trim()) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
+
+  if (firstName.length > 100 || lastName.length > 100 || email.length > 254 || message.length > 5000) {
+    return NextResponse.json({ error: 'Field too long' }, { status: 400 })
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
     return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
+  }
+
+  if (phone !== undefined && phone !== null) {
+    if (typeof phone !== 'string' || phone.length > 30 || !/^[+\d\s\-().]*$/.test(phone)) {
+      return NextResponse.json({ error: 'Invalid phone number' }, { status: 400 })
+    }
   }
 
   try {
@@ -32,8 +49,8 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json({ success: true })
-  } catch (err: any) {
+  } catch (err) {
     console.error('resend error:', err)
-    return NextResponse.json({ error: 'Failed to send email', detail: err?.message ?? String(err) }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
   }
 }
