@@ -52,10 +52,6 @@ export default function ContactForm() {
             </div>
           </div>
           <div className={styles.contactRow}>
-            <div className={`${styles.contactIconPlain} ${styles.emailIcon}`}>✉</div>
-            <div className={styles.contactText}>kontakt@termin8.ch</div>
-          </div>
-          <div className={styles.contactRow}>
             <div className={styles.contactIconPlain}>📞</div>
             <div className={styles.contactText}>+41 52 624 25 25</div>
           </div>
