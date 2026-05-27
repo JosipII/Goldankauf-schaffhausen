@@ -7,14 +7,17 @@ import HowItWorks from '@/components/HowItWorks'
 import ContactForm from '@/components/ContactForm'
 import SilverBesteck from '@/components/SilverBesteck'
 import Footer from '@/components/Footer'
+import { getGoldPrice } from '@/lib/gold-price'
 
-export default function Home() {
+export default async function Home() {
+  const { price, updatedAt } = await getGoldPrice()
+
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero initialPrice={price} initialUpdatedAt={updatedAt} />
       <GoldBarImage />
-      <GoldPriceTable />
+      <GoldPriceTable initialPrice={price} />
       <SilverBesteck />
       <TrustBadges />
       <HowItWorks />

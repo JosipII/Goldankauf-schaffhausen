@@ -16,9 +16,13 @@ function fmt(val: number): string {
   return val.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }
 
-export default function GoldPriceTable() {
+interface GoldPriceTableProps {
+  initialPrice?: number | null
+}
+
+export default function GoldPriceTable({ initialPrice = null }: GoldPriceTableProps) {
   const { t } = useLang()
-  const [basePrice, setBasePrice] = useState<number | null>(null)
+  const [basePrice, setBasePrice] = useState<number | null>(initialPrice)
 
   useEffect(() => {
     fetch('/api/gold-price')

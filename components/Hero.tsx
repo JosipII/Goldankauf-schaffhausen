@@ -3,6 +3,15 @@ import { useEffect, useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import styles from './Hero.module.css'
 
+interface HeroProps {
+  initialPrice?: number | null
+  initialUpdatedAt?: string | null
+}
+
+function formatPrice(price: number): string {
+  return price.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+}
+
 function formatTime(iso: string): string {
   return new Date(iso).toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })
 }
@@ -12,18 +21,16 @@ function nextUpdate(iso: string): string {
   return next.toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })
 }
 
-export default function Hero() {
+export default function Hero({ initialPrice = null, initialUpdatedAt = null }: HeroProps) {
   const { t } = useLang()
-  const [price, setPrice] = useState<string>('—')
-  const [updatedAt, setUpdatedAt] = useState<string | null>(null)
+  const [price, setPrice] = useState<string>(initialPrice ? formatPrice(initialPrice) : '—')
+  const [updatedAt, setUpdatedAt] = useState<string | null>(initialUpdatedAt)
 
   useEffect(() => {
     fetch('/api/gold-price')
       .then(r => r.json())
       .then(data => {
-        if (data.price) {
-          setPrice(data.price.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }))
-        }
+        if (data.price) setPrice(formatPrice(data.price))
         if (data.updatedAt) setUpdatedAt(data.updatedAt)
       })
       .catch(() => {})

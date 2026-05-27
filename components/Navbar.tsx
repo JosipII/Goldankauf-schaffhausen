@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Image src="/images/logo.svg" alt="Termin8 Logo" width={40} height={40} className={styles.logoImg} />
+        <Image src="/images/logo.svg" alt="Goldankauf Schaffhausen" width={40} height={40} className={styles.logoImg} />
         <div className={styles.logoText}>
           <span className={styles.logoName}>Goldankauf Schaffhausen</span>
           <span className={styles.logoSub}>{t.navSub}</span>
