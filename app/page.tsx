@@ -15,10 +15,10 @@ export default function Home() {
       <Hero />
       <GoldBarImage />
       <GoldPriceTable />
+      <SilverBesteck />
       <TrustBadges />
       <HowItWorks />
       <ContactForm />
-      <SilverBesteck />
       <Footer />
     </>
   )
