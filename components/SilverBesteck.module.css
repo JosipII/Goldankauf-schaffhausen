@@ -1,0 +1,110 @@
+.section {
+  background: var(--text);
+  padding: 84px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+}
+
+.content {
+  flex: 1;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--surface);
+  margin-bottom: 20px;
+}
+
+.body {
+  font-size: 15px;
+  font-weight: 300;
+  color: #7a6e5a;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: 480px;
+}
+
+.items {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5a5245;
+}
+
+.priceBox {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #2e2820;
+  padding: 40px 56px;
+  gap: 4px;
+}
+
+.priceNum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 88px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+
+.priceUnit {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--gold-light);
+  margin-top: 4px;
+}
+
+.priceNote {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5a5245;
+  margin-top: 12px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    padding: 52px 20px;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .priceBox {
+    width: 100%;
+    padding: 32px 24px;
+  }
+  .priceNum { font-size: 72px; }
+}

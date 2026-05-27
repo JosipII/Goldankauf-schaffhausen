@@ -5,6 +5,7 @@ import GoldPriceTable from '@/components/GoldPriceTable'
 import TrustBadges from '@/components/TrustBadges'
 import HowItWorks from '@/components/HowItWorks'
 import ContactForm from '@/components/ContactForm'
+import SilverBesteck from '@/components/SilverBesteck'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <TrustBadges />
       <HowItWorks />
       <ContactForm />
+      <SilverBesteck />
       <Footer />
     </>
   )
