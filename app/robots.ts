@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://goldankauf-schaffhausen.ch/sitemap.xml',
+    sitemap: 'https://www.goldankauf-schaffhausen.ch/sitemap.xml',
   }
 }

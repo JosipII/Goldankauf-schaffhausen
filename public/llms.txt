@@ -15,7 +15,7 @@ Goldankauf Schaffhausen wird betrieben durch Termin8 (Nikola Mrsic), eingetragen
 
 - Adresse: Löwengässchen 3, 8200 Schaffhausen, Schweiz
 - Telefon: +41 52 624 25 25
-- Kontaktformular: https://goldankauf-schaffhausen.ch/#kontakt
+- Kontaktformular: https://www.goldankauf-schaffhausen.ch/#kontakt
 - Übergeordnetes Unternehmen: https://termin8.ch
 
 ## Preise
@@ -24,8 +24,8 @@ Ankaufspreise basieren auf dem aktuellen Marktpreis XAU/CHF. Die Website zeigt L
 
 ## Rechtliches
 
-- [Datenschutzerklärung](https://goldankauf-schaffhausen.ch/datenschutz)
-- [Impressum](https://goldankauf-schaffhausen.ch/impressum)
-- [AGB](https://goldankauf-schaffhausen.ch/agb)
+- [Datenschutzerklärung](https://www.goldankauf-schaffhausen.ch/datenschutz)
+- [Impressum](https://www.goldankauf-schaffhausen.ch/impressum)
+- [AGB](https://www.goldankauf-schaffhausen.ch/agb)
 
 Gerichtsstand: Schaffhausen, Schweiz. Anwendbares Recht: Schweizerisches Recht.

@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE = 'https://goldankauf-schaffhausen.ch'
+const BASE = 'https://www.goldankauf-schaffhausen.ch'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

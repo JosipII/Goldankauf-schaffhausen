@@ -3,7 +3,7 @@ import { LangProvider } from '@/lib/lang-context'
 import CookieBanner from '@/components/CookieBanner'
 import './globals.css'
 
-const BASE = 'https://goldankauf-schaffhausen.ch'
+const BASE = 'https://www.goldankauf-schaffhausen.ch'
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
