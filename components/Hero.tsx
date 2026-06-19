@@ -17,7 +17,7 @@ function formatTime(iso: string): string {
 }
 
 function nextUpdate(iso: string): string {
-  const next = new Date(new Date(iso).getTime() + 8 * 60 * 60 * 1000)
+  const next = new Date(new Date(iso).getTime() + 5 * 60 * 1000)
   return next.toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })
 }
 
@@ -42,7 +42,7 @@ export default function Hero({ initialPrice = null, initialUpdatedAt = null }: H
       <span>{t.priceNext}: {nextUpdate(updatedAt)}</span>
     </div>
   ) : (
-    <div className={styles.priceMeta}><span>— alle 8h</span></div>
+    <div className={styles.priceMeta}><span>— alle 5 Min.</span></div>
   )
 
   const PriceContent = () => (
