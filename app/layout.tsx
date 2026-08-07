@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { LangProvider } from '@/lib/lang-context'
 import CookieBanner from '@/components/CookieBanner'
 import './globals.css'
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <CookieBanner />
         </LangProvider>
+        <Analytics />
       </body>
     </html>
   )
