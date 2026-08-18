@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { adminAuthIsConfigured, hasAdminSession } from '@/lib/admin-auth'
-import { getGoldPrice } from '@/lib/gold-price'
-import { LoginForm, PriceForm } from './AdminForms'
+import { getGoldPrice, getSilverwarePrice } from '@/lib/gold-price'
+import { LoginForm, LogoutForm, PriceForm, SilverwarePriceForm } from './AdminForms'
 import styles from './admin.module.css'
 
 export const metadata: Metadata = {
@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 export default async function AdminPage() {
   const authenticated = await hasAdminSession()
   const configured = adminAuthIsConfigured()
-  const current = authenticated ? await getGoldPrice() : null
+  const [current, silverware] = authenticated
+    ? await Promise.all([getGoldPrice(), getSilverwarePrice()])
+    : [null, null]
 
   return (
     <main className={styles.page}>
@@ -43,6 +45,15 @@ export default async function AdminPage() {
               )}
             </div>
             <PriceForm currentPrice={current?.price ?? null} />
+            <div className={styles.current}>
+              <span>Versilbertes Besteck</span>
+              <strong>{silverware?.price ? `CHF ${silverware.price.toLocaleString('de-CH', { maximumFractionDigits: 2 })} / kg` : 'Noch kein Preis'}</strong>
+              {silverware?.updatedAt && (
+                <small>Aktualisiert am {new Date(silverware.updatedAt).toLocaleString('de-CH', { dateStyle: 'medium', timeStyle: 'short' })}</small>
+              )}
+            </div>
+            <SilverwarePriceForm currentPrice={silverware?.price ?? null} />
+            <LogoutForm />
           </>
         ) : (
           <LoginForm configured={configured} />

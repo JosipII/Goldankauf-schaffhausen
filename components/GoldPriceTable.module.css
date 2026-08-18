@@ -56,19 +56,8 @@
   letter-spacing: 0.06em;
   color: var(--text-muted);
 }
-.table tbody tr:first-child td {
-  color: var(--gold);
-  font-weight: 500;
-}
 .table tbody tr:hover td {
   background: var(--surface);
-}
-.disclaimer {
-  margin-top: 16px;
-  font-size: 11px;
-  color: var(--text-faint);
-  letter-spacing: 0.03em;
-  line-height: 1.6;
 }
 .loading {
   font-family: 'DM Mono', monospace;

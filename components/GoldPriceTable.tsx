@@ -6,7 +6,6 @@ import styles from './GoldPriceTable.module.css'
 const TROY_OZ_TO_G = 31.1035
 
 const KARATS = [
-  { key: 'tableRow24', fineness: 1.0 },
   { key: 'tableRow18', fineness: 0.75 },
   { key: 'tableRow14', fineness: 0.585 },
   { key: 'tableRow9',  fineness: 0.375 },
@@ -66,7 +65,6 @@ export default function GoldPriceTable({ initialPrice = null }: GoldPriceTablePr
           </table>
         </div>
       )}
-      <p className={styles.disclaimer}>{t.tableDisclaimer}</p>
     </section>
   )
 }

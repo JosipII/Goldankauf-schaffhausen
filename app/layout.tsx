@@ -10,7 +10,7 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Goldankauf Schaffhausen',
-  description: 'Goldankauf in Schaffhausen — wir kaufen Goldschmuck, Münzen, Zahngold, Barren und versilbertes Besteck (31 CHF/kg) zum besten Marktpreis.',
+  description: 'Goldankauf in Schaffhausen — wir kaufen Goldschmuck, Münzen, Zahngold, Barren und versilbertes Besteck zum besten Marktpreis.',
   url: BASE,
   telephone: '+41526242525',
   address: {
@@ -39,9 +39,7 @@ const localBusinessSchema = {
       {
         '@type': 'Offer',
         name: 'Versilbertes Besteck ankaufen',
-        description: 'Ankauf von versilbertem Besteck zum Festpreis von 31 CHF/kg.',
-        priceCurrency: 'CHF',
-        price: '31',
+        description: 'Ankauf von versilbertem Besteck zum aktuellen Ankaufspreis.',
       },
     ],
   },
@@ -50,7 +48,7 @@ const localBusinessSchema = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: 'Gold verkaufen Schaffhausen | Goldankauf zum Bestpreis',
-  description: 'Goldankauf Schaffhausen — wir kaufen Goldschmuck, Münzen, Zahngold & Barren sowie versilbertes Besteck (31 CHF/kg) zum besten Marktpreis. Diskret, seriös, sofort bezahlt.',
+  description: 'Goldankauf Schaffhausen — wir kaufen Goldschmuck, Münzen, Zahngold, Barren und versilbertes Besteck zum besten Marktpreis. Diskret, seriös, sofort bezahlt.',
   icons: {
     icon: '/images/logo.svg',
     shortcut: '/images/logo.svg',
@@ -65,7 +63,7 @@ export const metadata: Metadata = {
     url: BASE,
     siteName: 'Goldankauf Schaffhausen',
     title: 'Gold verkaufen Schaffhausen | Goldankauf zum Bestpreis',
-    description: 'Goldankauf Schaffhausen — wir kaufen Goldschmuck, Münzen, Zahngold & Barren sowie versilbertes Besteck (31 CHF/kg) zum besten Marktpreis. Diskret, seriös, sofort bezahlt.',
+    description: 'Goldankauf Schaffhausen — wir kaufen Goldschmuck, Münzen, Zahngold, Barren und versilbertes Besteck zum besten Marktpreis. Diskret, seriös, sofort bezahlt.',
     images: [
       {
         url: '/images/goldbar.png',

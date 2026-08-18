@@ -1,55 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import styles from './Hero.module.css'
 
-interface HeroProps {
-  initialPrice?: number | null
-  initialUpdatedAt?: string | null
-}
-
-function formatPrice(price: number): string {
-  return price.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-}
-
-function formatTime(iso: string): string {
-  return new Date(iso).toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' })
-}
-
-export default function Hero({ initialPrice = null, initialUpdatedAt = null }: HeroProps) {
+export default function Hero() {
   const { t } = useLang()
-  const [price, setPrice] = useState<string>(initialPrice ? formatPrice(initialPrice) : '—')
-  const [updatedAt, setUpdatedAt] = useState<string | null>(initialUpdatedAt)
-
-  useEffect(() => {
-    fetch('/api/gold-price')
-      .then(r => r.json())
-      .then(data => {
-        if (data.price) setPrice(formatPrice(data.price))
-        if (data.updatedAt) setUpdatedAt(data.updatedAt)
-      })
-      .catch(() => {})
-  }, [])
-
-  const PriceMeta = () => updatedAt ? (
-    <div className={styles.priceMeta}>
-      <span>{t.priceStand}: {formatTime(updatedAt)}</span>
-    </div>
-  ) : (
-    <div className={styles.priceMeta}><span>—</span></div>
-  )
-
-  const PriceContent = () => (
-    <>
-      <div className={styles.priceLabel}>
-        <span className={styles.liveDot} />
-        {t.priceLabel}
-      </div>
-      <div className={styles.priceValue}>{price}</div>
-      <div className={styles.priceUnit}>{t.priceUnit}</div>
-      <PriceMeta />
-    </>
-  )
 
   return (
     <section className={styles.hero}>
@@ -65,18 +19,6 @@ export default function Hero({ initialPrice = null, initialUpdatedAt = null }: H
         <div className={styles.actions}>
           <a className={styles.btnGold} href="#kontakt">{t.heroCta}</a>
         </div>
-        <div className={styles.priceInline}>
-          <div className={styles.priceInlineLabel}>
-            <span className={styles.liveDot} />
-            {t.priceLabel}
-          </div>
-          <div className={styles.priceInlineValue}>{price}</div>
-          <div className={styles.priceInlineUnit}>{t.priceUnit}</div>
-          <PriceMeta />
-        </div>
-      </div>
-      <div className={styles.priceCard}>
-        <PriceContent />
       </div>
     </section>
   )

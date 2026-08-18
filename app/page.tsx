@@ -7,20 +7,20 @@ import HowItWorks from '@/components/HowItWorks'
 import ContactForm from '@/components/ContactForm'
 import SilverBesteck from '@/components/SilverBesteck'
 import Footer from '@/components/Footer'
-import { getGoldPrice } from '@/lib/gold-price'
+import { getGoldPrice, getSilverwarePrice } from '@/lib/gold-price'
 
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  const { price, updatedAt } = await getGoldPrice()
+  const [{ price }, { price: silverwarePrice }] = await Promise.all([getGoldPrice(), getSilverwarePrice()])
 
   return (
     <>
       <Navbar />
-      <Hero initialPrice={price} initialUpdatedAt={updatedAt} />
+      <Hero />
       <GoldBarImage />
       <GoldPriceTable initialPrice={price} />
-      <SilverBesteck />
+      <SilverBesteck initialPrice={silverwarePrice} />
       <TrustBadges />
       <HowItWorks />
       <ContactForm />

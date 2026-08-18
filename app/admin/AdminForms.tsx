@@ -1,7 +1,7 @@
 'use client'
 
 import { useActionState } from 'react'
-import { login, logout, updateGoldPrice, type AdminActionState } from './actions'
+import { login, logout, updateGoldPrice, updateSilverwarePrice, type AdminActionState } from './actions'
 import styles from './admin.module.css'
 
 const initialState: AdminActionState = {}
@@ -27,19 +27,37 @@ export function LoginForm({ configured }: { configured: boolean }) {
 export function PriceForm({ currentPrice }: { currentPrice: number | null }) {
   const [state, action, pending] = useActionState(updateGoldPrice, initialState)
   return (
-    <>
-      <form action={action} className={styles.form}>
-        <label htmlFor="price">Goldpreis in CHF pro Feinunze</label>
-        <div className={styles.priceInput}>
-          <span>CHF</span>
-          <input id="price" name="price" type="number" min="0.01" max="1000000" step="0.01" inputMode="decimal" defaultValue={currentPrice ?? ''} placeholder="z. B. 2’950.00" required autoFocus disabled={pending} />
-        </div>
-        <button type="submit" disabled={pending}>{pending ? 'Speichern …' : 'Preis speichern'}</button>
-        <Message state={state} />
-      </form>
-      <form action={logout} className={styles.logoutForm}>
-        <button type="submit" className={styles.logout}>Abmelden</button>
-      </form>
-    </>
+    <form action={action} className={styles.form}>
+      <label htmlFor="price">Goldpreis in CHF pro Feinunze</label>
+      <div className={styles.priceInput}>
+        <span>CHF</span>
+        <input id="price" name="price" type="number" min="0.01" max="1000000" step="0.01" inputMode="decimal" defaultValue={currentPrice ?? ''} placeholder="z. B. 2’950.00" required autoFocus disabled={pending} />
+      </div>
+      <button type="submit" disabled={pending}>{pending ? 'Speichern …' : 'Goldpreis speichern'}</button>
+      <Message state={state} />
+    </form>
+  )
+}
+
+export function SilverwarePriceForm({ currentPrice }: { currentPrice: number | null }) {
+  const [state, action, pending] = useActionState(updateSilverwarePrice, initialState)
+  return (
+    <form action={action} className={styles.form}>
+      <label htmlFor="silverware-price">Besteckpreis in CHF pro Kilogramm</label>
+      <div className={styles.priceInput}>
+        <span>CHF</span>
+        <input id="silverware-price" name="price" type="number" min="0.01" max="10000" step="0.01" inputMode="decimal" defaultValue={currentPrice ?? ''} placeholder="z. B. 31.00" required disabled={pending} />
+      </div>
+      <button type="submit" disabled={pending}>{pending ? 'Speichern …' : 'Besteckpreis speichern'}</button>
+      <Message state={state} />
+    </form>
+  )
+}
+
+export function LogoutForm() {
+  return (
+    <form action={logout} className={styles.logoutForm}>
+      <button type="submit" className={styles.logout}>Abmelden</button>
+    </form>
   )
 }

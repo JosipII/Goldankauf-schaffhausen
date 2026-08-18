@@ -10,7 +10,7 @@ import {
   hasAdminSession,
   passwordIsValid,
 } from '@/lib/admin-auth'
-import { setGoldPrice } from '@/lib/gold-price'
+import { setGoldPrice, setSilverwarePrice } from '@/lib/gold-price'
 
 export interface AdminActionState {
   error?: string
@@ -55,6 +55,30 @@ export async function updateGoldPrice(_state: AdminActionState, formData: FormDa
     }
   } catch (error) {
     console.error('manual gold-price update failed:', error)
+    return { error: 'Der Preis konnte nicht gespeichert werden. Bitte versuche es erneut.' }
+  }
+}
+
+export async function updateSilverwarePrice(_state: AdminActionState, formData: FormData): Promise<AdminActionState> {
+  if (!(await hasAdminSession())) {
+    return { error: 'Deine Sitzung ist abgelaufen. Bitte melde dich erneut an.' }
+  }
+
+  const rawPrice = formData.get('price')
+  const price = typeof rawPrice === 'string' ? Number(rawPrice.replace(',', '.')) : Number.NaN
+  if (!Number.isFinite(price) || price <= 0 || price > 10_000) {
+    return { error: 'Bitte gib einen gültigen Preis zwischen 0 und 10’000 CHF ein.' }
+  }
+
+  try {
+    const saved = await setSilverwarePrice(price)
+    revalidatePath('/')
+    revalidatePath('/admin')
+    return {
+      success: `Besteckpreis auf CHF ${saved.price?.toLocaleString('de-CH', { maximumFractionDigits: 2 })} pro kg gespeichert.`,
+    }
+  } catch (error) {
+    console.error('silverware-price update failed:', error)
     return { error: 'Der Preis konnte nicht gespeichert werden. Bitte versuche es erneut.' }
   }
 }
