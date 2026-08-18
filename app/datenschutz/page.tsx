@@ -31,7 +31,7 @@ const content = {
       },
       {
         heading: 'Drittanbieter und Auftragsverarbeiter',
-        body: `Zur Bereitstellung unserer Webseite setzen wir folgende externe Dienste ein:\n\n• Resend (resend.com) – für den Versand von E-Mail-Benachrichtigungen nach Eingang einer Kontaktanfrage. Anbieter: Resend Inc., USA. Ihre E-Mail-Adresse und Ihr Name werden zur Zustellung der Nachricht verwendet. Resend verarbeitet Daten gemäss seiner Datenschutzerklärung.\n\n• Upstash (upstash.com) – zur technischen Absicherung des Kontaktformulars (Rate-Limiting). Es werden keine personenbezogenen Daten dauerhaft gespeichert.\n\n• GoldAPI (goldapi.io) – zur Anzeige aktueller Goldkurse. Es werden keine personenbezogenen Daten übermittelt.`,
+        body: `Zur Bereitstellung unserer Webseite setzen wir folgende externe Dienste ein:\n\n• Resend (resend.com) – für den Versand von E-Mail-Benachrichtigungen nach Eingang einer Kontaktanfrage. Anbieter: Resend Inc., USA. Ihre E-Mail-Adresse und Ihr Name werden zur Zustellung der Nachricht verwendet. Resend verarbeitet Daten gemäss seiner Datenschutzerklärung.\n\n• Upstash (upstash.com) – zur technischen Absicherung des Kontaktformulars (Rate-Limiting) und zur Speicherung des manuell gepflegten Goldpreises. Im Zusammenhang mit dem Goldpreis werden keine personenbezogenen Daten gespeichert.`,
       },
       {
         heading: 'Cookies',
@@ -93,7 +93,7 @@ const content = {
       },
       {
         heading: 'Third-Party Services',
-        body: `We use the following external services:\n\n• Resend (resend.com) – for sending email notifications when a contact enquiry is received. Provider: Resend Inc., USA. Your email address and name are used solely for message delivery.\n\n• Upstash (upstash.com) – for rate-limiting the contact form. No personal data is permanently stored.\n\n• GoldAPI (goldapi.io) – for displaying current gold prices. No personal data is transmitted.`,
+        body: `We use the following external services:\n\n• Resend (resend.com) – for sending email notifications when a contact enquiry is received. Provider: Resend Inc., USA. Your email address and name are used solely for message delivery.\n\n• Upstash (upstash.com) – for rate-limiting the contact form and storing the manually maintained gold price. No personal data is stored in connection with the gold price.`,
       },
       {
         heading: 'Cookies',

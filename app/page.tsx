@@ -9,6 +9,8 @@ import SilverBesteck from '@/components/SilverBesteck'
 import Footer from '@/components/Footer'
 import { getGoldPrice } from '@/lib/gold-price'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const { price, updatedAt } = await getGoldPrice()
 
