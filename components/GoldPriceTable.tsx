@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import styles from './GoldPriceTable.module.css'
 
-const TROY_OZ_TO_G = 31.1035
-
 const KARATS = [
   { key: 'tableRow18', fineness: 0.75 },
   { key: 'tableRow14', fineness: 0.585 },
@@ -41,23 +39,17 @@ export default function GoldPriceTable({ initialPrice = null }: GoldPriceTablePr
           <table className={styles.table}>
             <thead>
               <tr>
-                <th></th>
+                <th>{t.tablePurity}</th>
                 <th>{t.tableCol1g}</th>
-                <th>{t.tableCol1oz}</th>
-                <th>{t.tableCol1kg}</th>
               </tr>
             </thead>
             <tbody>
               {KARATS.map(({ key, fineness }) => {
-                const perG  = (basePrice / TROY_OZ_TO_G) * fineness
-                const perOz = basePrice * fineness
-                const perKg = perG * 1000
+                const perG = basePrice * fineness
                 return (
                   <tr key={key}>
                     <td>{t[key]}</td>
-                    <td>CHF {fmt(perG)}</td>
-                    <td>CHF {fmt(perOz)}</td>
-                    <td>CHF {fmt(perKg)}</td>
+                    <td><span className={styles.currency}>CHF</span> {fmt(perG)}</td>
                   </tr>
                 )
               })}

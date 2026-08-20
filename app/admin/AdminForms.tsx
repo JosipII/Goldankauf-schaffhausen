@@ -28,10 +28,10 @@ export function PriceForm({ currentPrice }: { currentPrice: number | null }) {
   const [state, action, pending] = useActionState(updateGoldPrice, initialState)
   return (
     <form action={action} className={styles.form}>
-      <label htmlFor="price">Goldpreis in CHF pro Feinunze</label>
+      <label htmlFor="price">Ankaufspreis in CHF pro Gramm 999.9 Gold</label>
       <div className={styles.priceInput}>
         <span>CHF</span>
-        <input id="price" name="price" type="number" min="0.01" max="1000000" step="0.01" inputMode="decimal" defaultValue={currentPrice ?? ''} placeholder="z. B. 2’950.00" required autoFocus disabled={pending} />
+        <input id="price" name="price" type="number" min="0.01" max="10000" step="0.01" inputMode="decimal" defaultValue={currentPrice ?? ''} placeholder="z. B. 105.00" required autoFocus disabled={pending} />
       </div>
       <button type="submit" disabled={pending}>{pending ? 'Speichern …' : 'Goldpreis speichern'}</button>
       <Message state={state} />

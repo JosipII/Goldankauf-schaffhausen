@@ -39,8 +39,8 @@ export async function updateGoldPrice(_state: AdminActionState, formData: FormDa
 
   const rawPrice = formData.get('price')
   const price = typeof rawPrice === 'string' ? Number(rawPrice.replace(',', '.')) : Number.NaN
-  if (!Number.isFinite(price) || price <= 0 || price > 1_000_000) {
-    return { error: 'Bitte gib einen gültigen Preis zwischen 0 und 1’000’000 CHF ein.' }
+  if (!Number.isFinite(price) || price <= 0 || price > 10_000) {
+    return { error: 'Bitte gib einen gültigen Preis zwischen 0 und 10’000 CHF ein.' }
   }
 
   try {
@@ -51,7 +51,7 @@ export async function updateGoldPrice(_state: AdminActionState, formData: FormDa
       success: `Goldpreis auf CHF ${saved.price?.toLocaleString('de-CH', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      })} gespeichert.`,
+      })} pro Gramm 999.9 gespeichert.`,
     }
   } catch (error) {
     console.error('manual gold-price update failed:', error)

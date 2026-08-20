@@ -38,8 +38,8 @@ export default async function AdminPage() {
         {authenticated ? (
           <>
             <div className={styles.current}>
-              <span>Aktuell gespeichert</span>
-              <strong>{current?.price ? `CHF ${current.price.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : 'Noch kein Preis'}</strong>
+              <span>999.9 Gold · 1 Gramm</span>
+              <strong>{current?.price ? `CHF ${current.price.toLocaleString('de-CH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / g` : 'Noch kein Preis'}</strong>
               {current?.updatedAt && (
                 <small>Aktualisiert am {new Date(current.updatedAt).toLocaleString('de-CH', { dateStyle: 'medium', timeStyle: 'short' })}</small>
               )}

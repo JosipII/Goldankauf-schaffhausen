@@ -14,18 +14,16 @@
   font-weight: 300; letter-spacing: -0.02em; margin-bottom: 40px; color: var(--text);
 }
 .tableWrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  width: min(100%, 920px);
+  border-top: 1px solid var(--border);
 }
 .table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  min-width: 460px;
 }
 .table thead th {
-  padding: 10px 20px;
+  padding: 14px 28px;
   text-align: right;
   font-family: 'Jost', sans-serif;
   font-size: 10px;
@@ -33,13 +31,13 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-faint);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-light);
 }
 .table thead th:first-child {
   text-align: left;
 }
 .table tbody td {
-  padding: 14px 20px;
+  padding: 22px 28px;
   text-align: right;
   color: var(--text);
   border-bottom: 1px solid var(--border-light);
@@ -51,10 +49,22 @@
 .table tbody td:first-child {
   text-align: left;
   font-family: 'Jost', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--text-muted);
+}
+.table tbody td:last-child {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+.currency {
+  margin-right: 8px;
+  color: var(--text-faint);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
 }
 .table tbody tr:hover td {
   background: var(--surface);
@@ -67,4 +77,7 @@
 }
 @media (max-width: 768px) {
   .section { padding: 56px 20px; }
+  .table thead th { padding: 12px; }
+  .table tbody td { padding: 18px 12px; }
+  .table tbody td:first-child { font-size: 12px; }
 }
