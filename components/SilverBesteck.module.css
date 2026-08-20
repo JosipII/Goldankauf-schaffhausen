@@ -98,6 +98,14 @@
   text-align: center;
 }
 
+.updatedAt {
+  margin-top: 14px;
+  color: var(--text-faint);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .section {
     flex-direction: column;

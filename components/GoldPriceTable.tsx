@@ -15,16 +15,21 @@ function fmt(val: number): string {
 
 interface GoldPriceTableProps {
   initialPrice?: number | null
+  initialUpdatedAt?: string | null
 }
 
-export default function GoldPriceTable({ initialPrice = null }: GoldPriceTableProps) {
-  const { t } = useLang()
+export default function GoldPriceTable({ initialPrice = null, initialUpdatedAt = null }: GoldPriceTableProps) {
+  const { lang, t } = useLang()
   const [basePrice, setBasePrice] = useState<number | null>(initialPrice)
+  const [updatedAt, setUpdatedAt] = useState<string | null>(initialUpdatedAt)
 
   useEffect(() => {
     fetch('/api/gold-price')
       .then(r => r.json())
-      .then(data => { if (data.price) setBasePrice(data.price) })
+      .then(data => {
+        if (data.price) setBasePrice(data.price)
+        if (data.updatedAt) setUpdatedAt(data.updatedAt)
+      })
       .catch(() => {})
   }, [])
 
@@ -55,6 +60,14 @@ export default function GoldPriceTable({ initialPrice = null }: GoldPriceTablePr
               })}
             </tbody>
           </table>
+          {updatedAt && (
+            <p className={styles.updatedAt}>
+              {t.lastUpdated}: {new Date(updatedAt).toLocaleString(lang === 'de' ? 'de-CH' : 'en-GB', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+              })}
+            </p>
+          )}
         </div>
       )}
     </section>

@@ -3,14 +3,23 @@ import { useEffect, useState } from 'react'
 import { useLang } from '@/lib/lang-context'
 import styles from './SilverBesteck.module.css'
 
-export default function SilverBesteck({ initialPrice = null }: { initialPrice?: number | null }) {
-  const { t } = useLang()
+interface SilverBesteckProps {
+  initialPrice?: number | null
+  initialUpdatedAt?: string | null
+}
+
+export default function SilverBesteck({ initialPrice = null, initialUpdatedAt = null }: SilverBesteckProps) {
+  const { lang, t } = useLang()
   const [price, setPrice] = useState(initialPrice)
+  const [updatedAt, setUpdatedAt] = useState(initialUpdatedAt)
 
   useEffect(() => {
     fetch('/api/silverware-price')
       .then(response => response.json())
-      .then(data => { if (typeof data.price === 'number') setPrice(data.price) })
+      .then(data => {
+        if (typeof data.price === 'number') setPrice(data.price)
+        if (data.updatedAt) setUpdatedAt(data.updatedAt)
+      })
       .catch(() => {})
   }, [])
   return (
@@ -25,6 +34,14 @@ export default function SilverBesteck({ initialPrice = null }: { initialPrice?: 
         <span className={styles.priceNum}>{price === null ? '—' : price.toLocaleString('de-CH', { maximumFractionDigits: 2 })}</span>
         <span className={styles.priceUnit}>{t.silverUnit}</span>
         <span className={styles.priceNote}>{t.silverNote}</span>
+        {updatedAt && (
+          <span className={styles.updatedAt}>
+            {t.lastUpdated}: {new Date(updatedAt).toLocaleString(lang === 'de' ? 'de-CH' : 'en-GB', {
+              dateStyle: 'medium',
+              timeStyle: 'short',
+            })}
+          </span>
+        )}
       </div>
     </section>
   )

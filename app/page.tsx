@@ -12,15 +12,15 @@ import { getGoldPrice, getSilverwarePrice } from '@/lib/gold-price'
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  const [{ price }, { price: silverwarePrice }] = await Promise.all([getGoldPrice(), getSilverwarePrice()])
+  const [gold, silverware] = await Promise.all([getGoldPrice(), getSilverwarePrice()])
 
   return (
     <>
       <Navbar />
       <Hero />
       <GoldBarImage />
-      <GoldPriceTable initialPrice={price} />
-      <SilverBesteck initialPrice={silverwarePrice} />
+      <GoldPriceTable initialPrice={gold.price} initialUpdatedAt={gold.updatedAt} />
+      <SilverBesteck initialPrice={silverware.price} initialUpdatedAt={silverware.updatedAt} />
       <TrustBadges />
       <HowItWorks />
       <ContactForm />

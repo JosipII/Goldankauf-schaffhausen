@@ -66,6 +66,13 @@
   font-weight: 400;
   letter-spacing: 0.08em;
 }
+.updatedAt {
+  margin-top: 14px;
+  color: var(--text-faint);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-align: right;
+}
 .table tbody tr:hover td {
   background: var(--surface);
 }
